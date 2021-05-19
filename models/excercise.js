@@ -19,7 +19,10 @@ const ExerciseSchema = new Schema({
     weight: Number,
     
     // creates reps attribute
-	reps: Number,
+    reps: Number,
+    
+    // creates sets attribute
+	sets: Number,
 
 });
 
