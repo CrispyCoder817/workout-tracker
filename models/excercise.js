@@ -16,7 +16,11 @@ const ExerciseSchema = new Schema({
     distance: Number,
     
     // creates weight attribute
-	weight: Number,
+    weight: Number,
+    
+    // creates reps attribute
+	reps: Number,
+
 });
 
 const Exercise = mongoose.model("Exercise", ExerciseSchema);
