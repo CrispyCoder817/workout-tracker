@@ -13,8 +13,10 @@ const ExerciseSchema = new Schema({
     duration: Number,
     
     // creates distance attribute
-	distance: Number,
-
+    distance: Number,
+    
+    // creates weight attribute
+	weight: Number,
 });
 
 const Exercise = mongoose.model("Exercise", ExerciseSchema);
