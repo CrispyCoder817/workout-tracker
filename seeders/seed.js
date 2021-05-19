@@ -135,3 +135,25 @@ db.Workout.deleteMany({})
     console.error(err);
     process.exit(1);
   });
+
+  var workoutCountIndex = 0;
+
+function exitProcess() {
+	workoutCountIndex += 1;
+
+	if (workoutCountIndex === workoutSeed.length) {
+		process.exit(0);
+	}
+}
+
+function createWorkout(index) {
+	db.Exercise.create(workoutSeed[index].exercises[0]).then(({ _id }) => {
+		// console.log("index: " + index);
+		db.Workout.create({
+			day: workoutSeed[index].day,
+			exercises: [_id],
+		}).then(() => {
+			exitProcess();
+		});
+	});
+}
