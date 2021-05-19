@@ -136,12 +136,12 @@ db.Workout.deleteMany({})
     process.exit(1);
   });
 
-  var workoutCountIndex = 0;
+  var workoutNumberIndex = 0;
 
 function exitProcess() {
-	workoutCountIndex += 1;
+	workoutNumberIndex += 1;
 
-	if (workoutCountIndex === workoutSeed.length) {
+	if (workoutNumberIndex === workoutSeed.length) {
 		process.exit(0);
 	}
 }
