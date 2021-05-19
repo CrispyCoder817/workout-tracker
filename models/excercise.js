@@ -10,7 +10,10 @@ const ExerciseSchema = new Schema({
     name: String,
         
     // creates duration attribute
-	duration: Number,
+    duration: Number,
+    
+    // creates distance attribute
+	distance: Number,
 
 });
 
