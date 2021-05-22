@@ -1,12 +1,11 @@
 const mongoose = require('mongoose');
 const db = require('../models');
-
+console.log(db);
 mongoose.connect('mongodb://localhost/workout', {
   useNewUrlParser: true,
   useFindAndModify: false,
   useUnifiedTopology: true,
 });
-
 const workoutSeed = [
   {
     day: new Date(new Date().setDate(new Date().getDate() - 9)),
@@ -124,7 +123,6 @@ const workoutSeed = [
     ],
   },
 ];
-
 db.Workout.deleteMany({})
   .then(() => db.Workout.collection.insertMany(workoutSeed))
   .then((data) => {
@@ -135,32 +133,3 @@ db.Workout.deleteMany({})
     console.error(err);
     process.exit(1);
   });
-
-  var workoutNumberIndex = 0;
-
-function exitProcess() {
-	workoutNumberIndex += 1;
-
-	if (workoutNumberIndex === workoutSeed.length) {
-		process.exit(0);
-	}
-}
-
-function createWorkout(index) {
-	db.Exercise.create(workoutSeed[index].exercises[0]).then(({ _id }) => {
-		db.Workout.create({
-			day: workoutSeed[index].day,
-			exercises: [_id],
-		}).then(() => {
-			exitProcess();
-		});
-	});
-}
-
-db.Exercise.deleteMany({}).then(() => {
-	db.Workout.deleteMany({}).then(() => {
-		for (var i = 0; i < workoutSeed.length; i++) {
-			createWorkout(i);
-		}
-	});
-});
